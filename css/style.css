@@ -1,0 +1,153 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eeeeee;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.container {
+    width: 600px;
+    max-width: 90%;
+    margin: 40px auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    background: #333333;
+    color: white;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #555555;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.card {
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #555555;
+    color: white;
+
+    font-size: 45px;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+.card.open {
+    background: white;
+}
+
+.card.matched {
+    background: #90ee90;
+    cursor: default;
+}
+
+.modal-background {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width: 400px;
+    max-width: 90%;
+
+    padding: 30px;
+
+    background: white;
+
+    text-align: center;
+}
+
+.modal h2 {
+    margin-top: 0;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.leaderboard {
+    margin-top: 20px;
+}
+
+.leaderboard-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr;
+
+    padding: 8px 0;
+
+    border-bottom: 1px solid #cccccc;
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 20px auto;
+    }
+
+    .card {
+        height: 80px;
+        font-size: 30px;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .info {
+        font-size: 16px;
+    }
+}
