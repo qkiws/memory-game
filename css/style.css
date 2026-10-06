@@ -1,0 +1,228 @@
+:root {
+  /* Базовые цвета */
+  --bg-color: #f7f9fc;
+  --text-color: #2D3748;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+
+  /* Кнопки */
+  --button-bg: #333333;
+  --button-bg-hover: #555555;
+  --button-text: #ffffff;
+  --button-border: #cbd5e1;
+
+  /* Карточки игры */
+  --card-bg-closed: #555555;
+  --card-text-closed: #ffffff;
+  --card-bg-open: #ffffff;
+  --card-text-open: #2D3748;
+  --card-bg-matched: #90ee90;
+  --card-text-matched: #2D3748;
+
+  /* Модальное окно и таблицы */
+  --modal-bg: #ffffff;
+  --modal-overlay: rgba(0, 0, 0, 0.6);
+  --border-color: #cccccc;
+}
+
+:root[data-theme="dark"] {
+  /* Базовые цвета */
+  --bg-color: #1a202c;
+  --text-color: #f7fafc;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+
+  /* Кнопки */
+  --button-bg: #4a5568;
+  --button-bg-hover: #718096;
+  --button-text: #ffffff;
+  --button-border: #4a5568;
+
+  /* Карточки игры */
+  --card-bg-closed: #2d3748;
+  --card-text-closed: #cbd5e1;
+  --card-bg-open: #4a5568;
+  --card-text-open: #ffffff;
+  --card-bg-matched: #2f855a; /* Более глубокий зеленый для темной темы */
+  --card-text-matched: #ffffff;
+
+  /* Модальное окно и таблицы */
+  --modal-bg: #2d3748;
+  --modal-overlay: rgba(0, 0, 0, 0.8);
+  --border-color: #4a5568;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.container {
+    width: 600px;
+    max-width: 90%;
+    margin: 40px auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+#themeButton {
+    background-color: var(--bg-color);
+    border: 1px solid var(--button-border);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    font-size: 20px;
+    padding: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease, background-color 0.3s, border-color 0.3s;
+    margin-left: 15px;
+}
+#themeButton:hover {
+    background-color: var(--bg-color);
+    transform: scale(1.05);
+}
+
+/* Обычные кнопки игрового интерфейса */
+button {
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    background: var(--button-bg);
+    color: var(--button-text);
+    font-size: 16px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+button:hover {
+    background: var(--button-bg-hover);
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* Карточки игры */
+.card {
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--card-bg-closed);
+    color: var(--card-text-closed);
+
+    font-size: 45px;
+    cursor: pointer;
+    user-select: none;
+    
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card.open {
+    background: var(--card-bg-open);
+    color: var(--card-text-open);
+}
+
+.card.matched {
+    background: var(--card-bg-matched);
+    color: var(--card-text-matched);
+    cursor: default;
+}
+
+/* Модальное окно */
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--modal-overlay);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.modal {
+    width: 400px;
+    max-width: 90%;
+    padding: 30px;
+    background: var(--modal-bg);
+    text-align: center;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    transition: background-color 0.3s ease;
+}
+
+.modal h2 {
+    margin-top: 0;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Таблица лидеров */
+.leaderboard {
+    margin-top: 20px;
+}
+
+.leaderboard-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 20px auto;
+    }
+
+    .card {
+        height: 80px;
+        font-size: 30px;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .info {
+        font-size: 16px;
+    }
+}
