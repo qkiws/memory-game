@@ -37,9 +37,13 @@ newGameButton.textContent = 'Новая игра';
 const leaderboardButton = document.createElement('button');
 leaderboardButton.textContent = 'Таблица лидеров';
 
+const themeButton = document.createElement('button');
+themeButton.id = 'themeButton'; 
+themeButton.textContent = '🌑';
+
 const buttons = document.createElement('div');
 
-buttons.append(newGameButton, leaderboardButton);
+buttons.append(newGameButton, leaderboardButton, themeButton);
 
 header.append(title, buttons);
 
@@ -489,6 +493,15 @@ leaderboardButton.addEventListener('click', function () {
 
 });
 
+themeButton.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light'; 
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    themeButton.textContent = newTheme === 'light' ? '🌑' : '☀️'; 
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+});
 
 /* Запуск */
 
